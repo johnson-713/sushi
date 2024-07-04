@@ -7,27 +7,29 @@
     <link rel="stylesheet" href="menu.css">
 </head>
 <body>
-    <div class="main">
+    <div class="menu-page">
         <div class="menu">
-            <img class="menu-img" src="/icons/logo.svg" width="40" height="40" alt="icons" class="manu-icons" onclick="homeHandle()" />
-            <img class="menu-img" src="/icons/home.svg" width="40" height="40" alt="icons" class="manu-icons" />
-            <img class="menu-img" src="/icons/menu.svg" width="40" height="40" alt="icons" class="manu-icons" onclick="menuHandle()" />
-            <img class="menu-img" src="/icons/cart.svg" width="40" height="40" alt="icons" class="manu-icons" onclick="cartHandle()" />
-            <img class="menu-img" src="/icons/location.svg" width="40" height="40" alt="icons" class="manu-icons" />
-            <img class="menu-img" src="/icons/exit.svg" width="40" height="40" alt="icons" class="manu-icons" />
+            <img src="/icons/logo.svg" alt="menu-icons" onclick="homeHandle()" />
+            <img src="/icons/home.svg" alt="menu-icons" onclick="homeHandle()" />
+            <img src="/icons/menu.svg" alt="menu-icons" onclick="menuHandle()" />
+            <img src="/icons/cart.svg" alt="menu-icons" onclick="cartHandle()" />
+            <img src="/icons/location.svg" alt="menu-icons" />
+            <img src="/icons/exit.svg" alt="menu-icons" />
         </div>
-        <div class="menu-page">
-            <div>
-                <p>CART</p>
-            </div>
-            <div class="cart-container">
-                <div class="cart-items"></div>
-                <div class="cart-total">
+        <div class="menu-container">
+            <p style="font-size: 50px; margin: 0;">CART</p>
+            <div class="whole-cart-container">
+                <div class="cart-container">
+
+                </div>
+                <div class="cart-container-total">
                     <h3>Your Subtotal</h3>
-                    <div class="total">
-                        <h3 class="total-text">Subtotal</h3>
-                        <h3 class="total-price"></h3>
+                    <div>
+                        <p>Subtotal</p>
+                        <p class="total-price"></p>
+                        
                     </div>
+                    <button>Confirm Order</button>
                 </div>
             </div>
         </div>

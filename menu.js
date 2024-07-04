@@ -57,47 +57,41 @@ const menuItems = [
   },
 ];
 
-const menuContainer = document.querySelector(".menu-container");
+const menuCardContainer = document.querySelector(".menu-card-container");
 
 menuItems.map((menuItem) => {
   const menuCard = document.createElement("div");
-  menuCard.classList.add("menu-card"); // Add a class for styling
-
+  menuCard.classList.add("menu-card");
   const image = document.createElement("img");
+
   image.src = menuItem.image;
   menuCard.appendChild(image);
 
-  const title = document.createElement("h3");
+  const title = document.createElement("p");
   title.textContent = menuItem.title;
   menuCard.appendChild(title);
 
   menuCard.addEventListener("click", () => {
-    // Get existing stored items (if any)
-    const storedItemsString = localStorage.getItem("selectedMenuItems");
-    let storedItems = [];
-    if (storedItemsString) {
-      storedItems = JSON.parse(storedItemsString);
+    let selectedMenus = [];
+
+    const storedMenu = localStorage.getItem("selectedMenu")
+
+    if(storedMenu) {
+      selectedMenus = JSON.parse(storedMenu)
     }
 
-    // Add the newly selected item
-    storedItems.push(menuItem);
+    selectedMenus.push(menuItem)
 
-    // Store the updated array in localStorage
-    localStorage.setItem("selectedMenuItems", JSON.stringify(storedItems));
+    localStorage.setItem("selectedMenu", JSON.stringify(selectedMenus));
   });
 
-  menuContainer.appendChild(menuCard);
+  menuCardContainer.appendChild(menuCard);
 });
 
 const homeHandle = () => {
   window.location.href = "landingPage.html";
-}
-
+};
 
 const cartHandle = () => {
   window.location.href = "cart.html";
-}
-
-const menuHandle = () => {
-  window.location.href = "menu.html";
-}
+};

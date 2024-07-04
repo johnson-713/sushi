@@ -2,98 +2,90 @@ body {
   margin: 0;
 }
 
-.main {
+.menu-page {
+  padding: 46px 56px;
   display: flex;
-  padding: 43px 57px;
   gap: 60px;
-  /* height: 100vh; */
 }
 
 .menu {
-  background-color: #0c0b0b;
+  background-color: #000;
   display: flex;
   flex-direction: column;
-  border-radius: 24px;
+  border-radius: 30px;
 }
 
-.menu-img {
+.menu img {
+  padding: 40px;
+  width: 40px;
   cursor: pointer;
-  padding: 28px;
 }
 
-.menu-img:hover {
-  background-color: #f1d5bb;
-}
-
-.menu-page {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
-.menu-page p {
-  font-size: 50px;
-  margin: 0;
-  border-bottom: 4px solid #f1d5bb;
-  padding-bottom: 15px;
-  font-weight: 700;
+.menu img:hover {
+  background-color: #F1D5BB;
 }
 
 .menu-container {
-  display: grid;
-  grid-template-columns: repeat(4, 240px);
-}
-
-.menu-card img {
-  height: 190px;
-  cursor: pointer;
-}
-
-.cart-items {
   display: flex;
   flex-direction: column;
+  gap: 50px;
+}
+
+.menu-card-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.whole-cart-container {
+  display: flex;
+  gap: 80px;
+}
+
+.cart-container-total {
+  background-color: #F1D5BB;
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-height: 200px;
+}
+
+.whole-cart-container h3 {
+  font-size: 40px;
+}
+
+.whole-cart-container h3, .whole-cart-container p {
+  margin: 0;
+}
+
+.whole-cart-container button {
+  background-color: #000;
+  color: #fff;
+  padding: 20px 84px;
 }
 
 .cart-menu {
+  padding: 37px 20px;
+  background-color: #F1D5BB;
   display: flex;
-  gap: 30px;
-  background-color: #f1d5bb;
-  padding: 20px;
+  gap: 20px;
+  align-items: center;
 }
 
-.cart-image {
+.cart-menu-image {
+  border-radius: 45px;
   width: 90px;
   height: 90px;
-  border-radius: 50%;
 }
 
-.quantity-container {
+.cart-menu-quantity-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 10px;
+  align-items: center;
 }
 
-.quantity-container h5 {
+.cart-quantity {
   background-color: #fff;
-  padding: 10px;
-}
-
-.cart-container {
-    display: flex;
-    gap: 30px;
-}
-
-.cart-total {
-    background-color: #f1d5bb;
-    padding: 20px;
-    height: 300px;
-}
-
-.cart-total h3 {
-    font-size: 40px;
-}
-
-.total-text {
-    font-size: 30px;
+  padding: 5px 10px;
 }

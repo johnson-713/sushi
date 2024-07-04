@@ -1,91 +1,86 @@
-// const cartItems = JSON.parse(localStorage.getItem("selectedMenuItems"));
-
-// console.log(cartItems);
-
 const homeHandle = () => {
-  window.location.href = "landingPage.html";
-};
-
-const cartHandle = () => {
-  window.location.href = "cart.html";
-};
+  window.location.href = "landingPage.html"
+}
 
 const menuHandle = () => {
-  window.location.href = "menu.html";
-};
+  window.location.href = "menu.html"
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const cartItems = JSON.parse(localStorage.getItem("selectedMenu"))
+
+  const cartContainer = document.querySelector(".cart-container")
+
+  const renderItems = () => {
+    cartContainer.innerHTML = ""
+
+    cartItems.map((cartItem, index) => {
+      const cartMenu = document.createElement("div")
+      cartMenu.classList.add("cart-menu")
+
+      const image = document.createElement("img")
+      image.classList.add("cart-menu-image")
+      image.src = cartItem.image
+      cartMenu.appendChild(image)
+
+      const textContainer = document.createElement("div")
+      textContainer.classList.add("cart-menu-text-container")
+      cartMenu.appendChild(textContainer)
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    const cartItems = JSON.parse(localStorage.getItem("selectedMenuItems")) || [];
-  
-    const cartContainer = document.querySelector('.cart-items');
-  
-    const renderCartItems = () => {
-      cartContainer.innerHTML = ''; // Clear the cart container
-  
-      cartItems.forEach((cartItem, index) => {
-        const cartMenu = document.createElement("div");
-        cartMenu.classList.add("cart-menu");
-  
-        const image = document.createElement("img");
-        image.classList.add("cart-image");
-        image.src = cartItem.image;
-        cartMenu.appendChild(image);
-  
-        const cartTextContainer = document.createElement("div");
-        cartTextContainer.classList.add("cart-text-container");
-        cartMenu.appendChild(cartTextContainer);
-  
-        const title = document.createElement("h4");
-        title.textContent = cartItem.title;
-        cartTextContainer.appendChild(title);
-  
-        const price = document.createElement("h5");
-        price.textContent = `$ ${cartItem.price * cartItem.quantity}`;
-        cartTextContainer.appendChild(price);
-  
-        const quantityContainer = document.createElement("div");
-        quantityContainer.classList.add("quantity-container");
-        cartMenu.appendChild(quantityContainer);
-  
-        const minusImage = document.createElement("img");
-        minusImage.src = '/icons/-.svg';
-        minusImage.addEventListener('click', () => updateQuantity(index, -1));
-        quantityContainer.appendChild(minusImage);
-  
-        const quantity = document.createElement("h5");
-        quantity.textContent = cartItem.quantity;
-        quantityContainer.appendChild(quantity);
-  
-        const plusImage = document.createElement("img");
-        plusImage.src = '/icons/+.svg';
-        plusImage.addEventListener('click', () => updateQuantity(index, 1));
-        quantityContainer.appendChild(plusImage);
-  
-        const cancelImage = document.createElement("img");
-        cancelImage.src = '/icons/cancel.svg';
-        cancelImage.addEventListener('click', () => removeItem(index));
-        cartMenu.appendChild(cancelImage);
-  
-        cartContainer.appendChild(cartMenu);
-      });
-  
-      // Update the localStorage
-      localStorage.setItem("selectedMenuItems", JSON.stringify(cartItems));
-    };
-  
-    const updateQuantity = (index, change) => {
-      if (cartItems[index].quantity + change > 0) {
-        cartItems[index].quantity += change;
-      }
-      renderCartItems();
-    };
-  
-    const removeItem = (index) => {
-      cartItems.splice(index, 1);
-      renderCartItems();
-    };
-  
-    renderCartItems();
-  });
-  
+      const title = document.createElement("p")
+      title.classList.add("cart-menu-title")
+      title.textContent = cartItem.title
+      textContainer.appendChild(title)
+
+      const price = document.createElement("p")
+      price.textContent = `$ ${cartItem.price * cartItem.quantity}`
+      textContainer.appendChild(price)
+
+
+      const quantityContainer = document.createElement("div")
+      quantityContainer.classList.add("cart-menu-quantity-container")
+      cartMenu.appendChild(quantityContainer)
+
+
+      const minus = document.createElement("img")
+      minus.src = "/icons/-.svg" 
+      minus.addEventListener("click", () => changeQuantity(index, -1))
+      quantityContainer.appendChild(minus)
+
+      const quantity = document.createElement("p")
+      quantity.classList.add("cart-quantity")
+      quantity.textContent = cartItem.quantity
+      quantityContainer.appendChild(quantity)
+
+      const plus = document.createElement("img")
+      plus.src = "/icons/+.svg"
+      plus.addEventListener("click", () => changeQuantity(index, 1))
+      quantityContainer.appendChild(plus)
+
+      const cancel = document.createElement("img")
+      cancel.src = "/icons/cancel.svg"
+      cancel.addEventListener("click", () => removeItem(index))
+      cartMenu.appendChild(cancel)
+
+      cartContainer.appendChild(cartMenu)
+
+      localStorage.setItem("selectedMenu", JSON.stringify(cartItems))
+    })
+  }
+
+  const changeQuantity = (index, change) => {
+    if(cartItems[index].quantity + change > 0) {
+      cartItems[index].quantity += change
+    }
+    renderItems()
+  }
+
+  const removeItem = (index) => {
+    cartItems.splice(index, 1)
+    renderItems()
+  }
+
+  renderItems()
+
+})
