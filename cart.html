@@ -12,7 +12,7 @@
             <img src="/icons/logo.svg" alt="menu-icons" onclick="homeHandle()" />
             <img src="/icons/home.svg" alt="menu-icons" onclick="homeHandle()" />
             <img src="/icons/menu.svg" alt="menu-icons" onclick="menuHandle()" />
-            <img src="/icons/cart.svg" alt="menu-icons" onclick="cartHandle()" />
+            <img src="/icons/cart.svg" class="menu-img" alt="menu-icons" onclick="cartHandle()" />
             <img src="/icons/location.svg" alt="menu-icons" />
             <img src="/icons/exit.svg" alt="menu-icons" />
         </div>
@@ -24,12 +24,12 @@
                 </div>
                 <div class="cart-container-total">
                     <h3>Your Subtotal</h3>
-                    <div>
+                    <div style="display: flex; justify-content: space-between;">
                         <p>Subtotal</p>
-                        <p class="total-price"></p>
+                        <p class="total-price" style="font-size: 20px; font-weight: 600;"></p>
                         
                     </div>
-                    <button>Confirm Order</button>
+                    <button onclick="confirm()">Confirm Order</button>
                 </div>
             </div>
         </div>

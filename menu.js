@@ -89,9 +89,15 @@ menuItems.map((menuItem) => {
 });
 
 const homeHandle = () => {
-  window.location.href = "landingPage.html";
+  window.location.href = "index.html";
 };
 
 const cartHandle = () => {
   window.location.href = "cart.html";
 };
+
+
+if(window.location.pathname === '/menu.html') {
+  const cartIcon = document.querySelector('.menu-img')
+  cartIcon.style.backgroundColor = "#F1D5BB"
+}
